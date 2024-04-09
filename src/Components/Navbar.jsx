@@ -6,7 +6,7 @@ const Navbar = () => {
         <li><Link className="font-bold" to={'/updateProfile'}>Update Profile</Link></li>
     </>
     return (
-        <div className="navbar bg-base-100 mx-auto md:px-32 justify-between">
+        <div className="navbar bg-base-100 mx-auto xl:px-32 justify-between">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,7 +44,7 @@ const Navbar = () => {
                         </ul>
                
                 </div>
-                <a className="btn mx-4">Button</a>
+                <a className="btn mx-4 bg-lime-500">Button</a>
             </div>
         </div>
     );
