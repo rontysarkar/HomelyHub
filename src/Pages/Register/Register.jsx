@@ -42,10 +42,12 @@ const Register = () => {
         setRegisterError('')
         createUser(data.email,data.password)
         .then(result=>{
-            toast.success('Congratulations! You have successfully registered.')
+            toast.success('You have successfully registered.')
             console.log(result.user)
         })
         .catch(error =>{
+            
+            toast.error(error.message.split('/')[1].split(')')[0])
             console.log(error)
         })
     }

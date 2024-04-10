@@ -15,7 +15,7 @@ const Navbar = () => {
         logOut()
     }
     return (
-        <div className="navbar bg-base-100 mx-auto xl:px-32 justify-between">
+        <div className="navbar bg-base-100 mx-auto xl:px-32 justify-between shadow-xl ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -36,7 +36,7 @@ const Navbar = () => {
             <div>
 
                 {
-                    user && <div title={user.email} className={"dropdown dropdown-end"} >
+                    user && <div className={"dropdown dropdown-end"} >
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-12 rounded-full">
                                 {
@@ -60,7 +60,7 @@ const Navbar = () => {
                 {
                     user ? <Link onClick={handleLogOut} className="btn mx-4  bg-[#1db2ff] text-white">Log Out</Link> : <Link to={'/login'} className="btn mx-4  bg-[#1db2ff] text-white">Login</Link>
                 }
-                
+
             </div>
         </div>
     );
