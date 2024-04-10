@@ -1,10 +1,11 @@
 import Banner from "../../Components/Banner/Banner";
 import Estate from "../../Components/Estate/Estate";
-
+import { Helmet } from 'react-helmet-async';
 const Home = () => {
 
     return (
         <div>
+            <Helmet><title>HomeLy Hub || Home</title></Helmet>
             <Banner />
             <div className=" md:w-2/3 mx-auto text-center my-16 space-y-4">
                 <h1 className="text-3xl font-semibold text-[#1db2ff]">The Largest Real Estate Marketing Portal in The World</h1>

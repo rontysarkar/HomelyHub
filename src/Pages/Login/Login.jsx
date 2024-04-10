@@ -1,27 +1,34 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Link } from "react-router-dom";
+import { Link,useLocation,useNavigate } from "react-router-dom";
 import googleLogo from '../../assets/google.png'
 import githubLogo from '../../assets/github.png'
 import { useForm } from "react-hook-form"
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import toast from 'react-hot-toast'
 
 const Login = () => {
     const {register,handleSubmit} = useForm()
     const { signInWithPopUp,signIn } = useContext(AuthContext)
     const gitProvider = new GithubAuthProvider();
     const googleProvider = new GoogleAuthProvider();
+    const {state} = useLocation()
+    const Navigate = useNavigate()
+    
+    
     
     
     // login 
     const onSubmit = (data) =>{
         signIn(data.email,data.password)
         .then(result=>{
-            console.log(result)
+            console.log(result.user)
+            toast.success(' You have successfully logged in')
+            state ? Navigate(state) : Navigate('/')
         })
         .catch(error=>{
-            console.error(error)
+            toast.error(error.message.split('/')[1].split(')')[0])
         })
     }
 
@@ -31,7 +38,8 @@ const Login = () => {
     const handleGithub = () =>{
         signInWithPopUp(gitProvider)
         .then(result=>{
-            console.log(result)
+            console.log(result.user)
+            state ? Navigate(state) : Navigate('/')
         })
         .catch(error=>{
             console.log(error)
@@ -41,11 +49,13 @@ const Login = () => {
         signInWithPopUp(googleProvider)
         .then(result=>{
             console.log(result)
+            state ? Navigate(state) : Navigate('/')
         })
         .catch(error=>{
             console.log(error)
         })
     }
+
 
     return (
         <div className="min-h-screen" >

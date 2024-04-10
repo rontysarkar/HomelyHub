@@ -3,19 +3,24 @@ import PropTypes from 'prop-types'
 import { createContext, useEffect, useState } from "react";
 import { auth } from '../Firebase/Firebase.config';
 
+
+
 export const AuthContext = createContext(null)
 
 const AuthProvider = ({children}) => {
+    const [loading,setLoading] = useState(true)
     const [user,setUser] = useState()
-    console.log(user)
+    
 
     // CreateUser Email and password
     const createUser = (email,password) =>{
+        setLoading(true)
         return createUserWithEmailAndPassword(auth,email,password)
     }
 
     // sign in with email and password
     const signIn =(email,password)=>{
+      setLoading(true)
       return  signInWithEmailAndPassword(auth,email,password)
     }
 
@@ -23,6 +28,7 @@ const AuthProvider = ({children}) => {
 
     // Sign in with popup
     const signInWithPopUp =(provider)=>{
+        setLoading(true)
        return signInWithPopup(auth,provider)
     }
 
@@ -36,7 +42,9 @@ const AuthProvider = ({children}) => {
     // OnAuth State Change
     useEffect(()=>{
         onAuthStateChanged(auth,(user)=>{
+            setLoading(false)
             setUser(user)
+            
         })
     },[])
 
@@ -52,6 +60,7 @@ const AuthProvider = ({children}) => {
         signInWithPopUp,
         user,
         logOut,
+        loading,
 
     }
     return (

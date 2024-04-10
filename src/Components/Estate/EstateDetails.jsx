@@ -4,9 +4,7 @@ import { useParams, useLoaderData } from "react-router-dom";
 const EstateDetails = () => {
     const data = useLoaderData();
     const { id } = useParams()
-    console.log(id)
     const estate = data?.find(d => d.id == id)
-    console.log(estate)
     const { image, estate_title, segment_name, description, price, location, status, area,facilities } = estate
 
 

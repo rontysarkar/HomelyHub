@@ -13,7 +13,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 const Register = () => {
     const [registerError,setRegisterError] = useState('')
     const [show,setShow] = useState(false)
-    const {register, handleSubmit,} = useForm()
+    const {register,reset, handleSubmit,} = useForm()
     const { createUser } = useContext(AuthContext)
     const gitProvider = new GithubAuthProvider();
     const googleProvider = new GoogleAuthProvider();
@@ -44,6 +44,7 @@ const Register = () => {
         .then(result=>{
             toast.success('You have successfully registered.')
             console.log(result.user)
+            reset()
         })
         .catch(error =>{
             
