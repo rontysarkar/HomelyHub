@@ -44,7 +44,7 @@ const Navbar = () => {
                         </ul>
                
                 </div>
-                <a className="btn mx-4 bg-lime-500">Button</a>
+                <Link to={'/login'} className="btn mx-4  bg-[#1db2ff] text-white">Login</Link>
             </div>
         </div>
     );

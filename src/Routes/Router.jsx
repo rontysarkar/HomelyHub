@@ -3,8 +3,10 @@ import Root from "../Layout/Root";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import EstateDetails from "../Components/Estate/EstateDetails";
 
 export const router = createBrowserRouter([
+  
     {
       path: "/",
       element: <Root/>,
@@ -21,6 +23,11 @@ export const router = createBrowserRouter([
           path:'/register',
           element:<Register/>
         },
+        {
+          path:"/estateDetails/:id",
+          loader: () => fetch('/estateData.json'),
+          element:<EstateDetails/>
+        }
         
       ]
     },

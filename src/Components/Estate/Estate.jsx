@@ -1,9 +1,15 @@
 import EstateCard from "./EstateCard";
-import useData from "../../Hooks/useData";
+import { useEffect, useState } from "react";
 
 const Estate = () => {
 
-    const estates = useData()
+    const [estates,setEstate] = useState()
+
+    useEffect(() =>{
+        fetch('/estateData.json')
+        .then(res=>res.json())
+        .then(data=> setEstate(data))
+    },[])
 
     
     

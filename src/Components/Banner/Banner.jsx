@@ -16,7 +16,7 @@ import 'swiper/css/scrollbar';
 
 
 // import required modules
-import { Navigation,Autoplay , Pagination,  A11y,EffectCoverflow} from 'swiper/modules';
+import { Navigation,Autoplay , Pagination,  A11y,EffectCards} from 'swiper/modules';
 
 
 const Banner = () => {
@@ -24,13 +24,13 @@ const Banner = () => {
         <>
          <Swiper
       // install Swiper modules
-      modules={[Navigation,Autoplay, Pagination, A11y,EffectCoverflow]}
+      modules={[Navigation,Autoplay, Pagination, A11y,EffectCards]}
       spaceBetween={50}
       autoplay={{
-        delay: 2500,
+        delay: 3000,
         disableOnInteraction: false,
       }}
-      effect="coverflow"
+      effect="cards"
       slidesPerView={1}
       navigation
       pagination={{ clickable: true }}

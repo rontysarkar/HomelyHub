@@ -16,8 +16,8 @@ const Login = () => {
     }
 
     return (
-        <div  >
-            <div className="xl:w-1/4  shadow-2xl rounded-xl mx-auto mt-20 ">
+        <div className="min-h-screen" >
+            <div className=" xl:w-1/4 lg:w-2/4  shadow-2xl rounded-xl mx-auto mt-20 ">
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                     <h1 className="text-center text-2xl font-bold">Login </h1>
                     <div className="form-control">
