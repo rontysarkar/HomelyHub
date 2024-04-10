@@ -3,22 +3,46 @@ import { Link } from "react-router-dom";
 import googleLogo from '../../assets/google.png'
 import githubLogo from '../../assets/github.png'
 import { useForm } from "react-hook-form"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import toast from 'react-hot-toast';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
 
 const Register = () => {
+    const [registerError,setRegisterError] = useState('')
+    const [show,setShow] = useState(false)
     const {register, handleSubmit,} = useForm()
     const { createUser } = useContext(AuthContext)
     const gitProvider = new GithubAuthProvider();
     const googleProvider = new GoogleAuthProvider();
     const { signInWithPopUp} = useContext(AuthContext)
+
+
     
 
     // CreateUser with email
     const onSubmit = (data) => {
+        if(data.password.length < 6){
+            setRegisterError('Password must be at least 6 characters long')
+            return
+        }
+
+        if(!/(?=.*[A-Z])/.test(data.password)){
+            setRegisterError('Must have an Uppercase letter in the password')
+            return
+        }
+        if(!/(?=.*[a-z])/.test(data.password)){
+            setRegisterError('Must have a Lowercase letter in the password')
+            return
+        }
+
+
+        setRegisterError('')
         createUser(data.email,data.password)
         .then(result=>{
+            toast.success('Congratulations! You have successfully registered.')
             console.log(result.user)
         })
         .catch(error =>{
@@ -62,7 +86,7 @@ const Register = () => {
                         <label className="label">
                             <span className="label-text ">Photo Url</span>
                         </label>
-                        <input {...register("image")} type="text" placeholder="Photo Url" className="input input-bordered" required />
+                        <input {...register("image")} type="text" placeholder="Photo Url" className="input input-bordered"  />
                     </div>
                     <div className="form-control">
                         <label className="label">
@@ -70,11 +94,20 @@ const Register = () => {
                         </label>
                         <input {...register("email")} type="email" placeholder="Email" className="input input-bordered" required />
                     </div>
-                    <div className="form-control">
+                    <div className="form-control relative">
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input {...register("password")} type="password" placeholder="Password" className="input input-bordered" required />
+                        <input {...register("password")} type={show ? 'text' : "password"} placeholder="Password" className="input input-bordered" required />
+
+                        {
+                            registerError && <p className="text-red-600 mt-3">{registerError}</p>
+                        }
+                        <div onClick={()=>setShow(!show)} className="absolute right-4 bottom-4 ">
+                           {
+                             show ? <FaEyeSlash size={20} /> : <FaEye size={20} /> 
+                           }
+                        </div>
 
                     </div>
                     <div className="form-control mt-6">
