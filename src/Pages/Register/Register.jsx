@@ -8,6 +8,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import toast from 'react-hot-toast';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 
 const Register = () => {
@@ -18,6 +19,7 @@ const Register = () => {
     const gitProvider = new GithubAuthProvider();
     const googleProvider = new GoogleAuthProvider();
     const { signInWithPopUp} = useContext(AuthContext)
+    const Navigate = useNavigate()
 
 
     
@@ -45,6 +47,7 @@ const Register = () => {
             toast.success('You have successfully registered.')
             console.log(result.user)
             reset()
+            Navigate('/')
         })
         .catch(error =>{
             

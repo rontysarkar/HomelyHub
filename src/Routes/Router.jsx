@@ -10,6 +10,7 @@ import ForRent from "../Pages/Sale or Rent/ForRent";
 import Profile from "../Pages/Profile/Profile";
 import UpdateProfile from "../Pages/UpdateProfile/UpdateProfile";
 import PrivetRoutes from "./PrivetRoutes";
+import Contact from "../Pages/contact/Contact";
 
 export const router = createBrowserRouter([
   
@@ -51,7 +52,11 @@ export const router = createBrowserRouter([
         },
         {
           path:'/updateProfile',
-          element:<UpdateProfile/>
+          element:<PrivetRoutes><UpdateProfile/></PrivetRoutes>
+        },
+        {
+          path:'/contact',
+          element:<PrivetRoutes><Contact/></PrivetRoutes>
         }
         
       ]
