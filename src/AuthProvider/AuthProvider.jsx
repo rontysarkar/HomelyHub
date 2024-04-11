@@ -1,4 +1,4 @@
-import {  createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import {  createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut,updateProfile } from 'firebase/auth';
 import PropTypes from 'prop-types'
 import { createContext, useEffect, useState } from "react";
 import { auth } from '../Firebase/Firebase.config';
@@ -32,20 +32,21 @@ const AuthProvider = ({children}) => {
        return signInWithPopup(auth,provider)
     }
 
-    // sign in with github
-    // const gitProvider = new GithubAuthProvider();
-    // const signWithGithub = () =>{
-    //     return 
-    // }
-
+    // update profile 
+    const userProfileUpdate = (name,photoURL) =>{
+       return updateProfile(auth.currentUser, { displayName: name, photoURL: photoURL})
+    }
 
     // OnAuth State Change
     useEffect(()=>{
-        onAuthStateChanged(auth,(user)=>{
+       const unSubscript = onAuthStateChanged(auth,(user)=>{
             setLoading(false)
             setUser(user)
             
-        })
+        });
+        return () => {
+            unSubscript();
+        }
     },[])
 
 
@@ -61,6 +62,8 @@ const AuthProvider = ({children}) => {
         user,
         logOut,
         loading,
+        userProfileUpdate,
+        setUser
 
     }
     return (

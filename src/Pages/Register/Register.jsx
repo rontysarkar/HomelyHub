@@ -15,7 +15,7 @@ const Register = () => {
     const [registerError,setRegisterError] = useState('')
     const [show,setShow] = useState(false)
     const {register,reset, handleSubmit,} = useForm()
-    const { createUser } = useContext(AuthContext)
+    const { createUser,userProfileUpdate,setUser } = useContext(AuthContext)
     const gitProvider = new GithubAuthProvider();
     const googleProvider = new GoogleAuthProvider();
     const { signInWithPopUp} = useContext(AuthContext)
@@ -44,6 +44,11 @@ const Register = () => {
         setRegisterError('')
         createUser(data.email,data.password)
         .then(result=>{
+            userProfileUpdate(data.name,data.image)
+            .then(result=>{
+                setUser({displayName : data.name, photoURL : data.image})
+                console.log(result)
+            })
             toast.success('You have successfully registered.')
             console.log(result.user)
             reset()
@@ -86,7 +91,7 @@ const Register = () => {
                         <label className="label">
                             <span className="label-text ">Name</span>
                         </label>
-                        <input {...register("Name")} type="text" placeholder="Name" className="input input-bordered" required />
+                        <input {...register("name")} type="text" placeholder="Name" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
