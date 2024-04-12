@@ -10,7 +10,7 @@ const Profile = () => {
     return (
         <div className=" min-h-[93vh] flex justify-center items-center bg-gradient-to-r from-[#e7f6fd] to-[#1db2ff]">
             <Helmet><title> Profile</title></Helmet>
-            <div className="space-y-10   w-1/2 h-2/3 bg-white text-center p-10 lg:p-16 rounded-2xl shadow-2xl my-10">
+            <div className="space-y-10  w-2/3 md:w-1/2 h-2/3 bg-white text-center p-10 lg:p-16 rounded-2xl shadow-2xl my-10">
                 <div data-aos='zoom-in' data-aos-duration='1000' tabIndex={0} role="button" className="avatar">
                     <div className="lg:w-44 rounded-full mx-auto">
                         {

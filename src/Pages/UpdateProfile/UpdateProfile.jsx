@@ -31,8 +31,8 @@ const UpdateProfile = () => {
     return (
         <div className=" min-h-[93vh] flex justify-center items-center bg-gradient-to-r from-[#e7f6fd] to-[#1db2ff]">
             <Helmet><title> update profile</title></Helmet>
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-10  w-1/2 h-2/3 bg-white lg:pl-80 p-10 lg:p-16  rounded-2xl ">
-                <h1 className="lg:text-4xl mb-16 text-[#1db2ff]">Personal Info</h1>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-10 w-2/3  xl:w-1/2 h-2/3  bg-white 2xl:pl-80 p-10 lg:p-16  rounded-2xl ">
+                <h1 className="lg:text-4xl mb-16 text-[#1db2ff]">Update Profile</h1>
                 <div className="space-y-4">
                     <h1 className="text-xl font-bold opacity-80">Full Name</h1>
                     <input {...register("name")} type="text" placeholder="Name"  className=" w-full p-2  " required />

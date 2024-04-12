@@ -9,8 +9,8 @@ const Partners = () => {
         <div className=' xl:px-32 mx-auto my-20'>
             <h1 className='text-3xl text-center font-bold'>Partners of HomelyHub</h1>
             <h1 className='py-2 text-center opacity-80 '>We are pleased to work with our partners</h1>
-            <div className=' flex flex-col lg:flex-row justify-center items-center gap-6 lg:gap-16 xl:px-32 mx-auto my-10'>
-                <div className=" w-72  mx-auto  ">
+            <div data-aos="zoom-in-up" data-aos-duration='1000' className=' flex flex-col lg:flex-row justify-center items-center gap-6 lg:gap-16 xl:px-32 mx-auto my-10'>
+                <div  className=" w-72  mx-auto  ">
                     <img className=' avatar object-cover' src={partner1} alt="" />
                 </div>
                 <div className=" w-72 mx-auto  ">
