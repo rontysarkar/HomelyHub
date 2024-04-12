@@ -40,7 +40,7 @@ const UpdateProfile = () => {
                 </div>
                 <div className="space-y-3">
                     <h1 className="text-xl font-bold opacity-80">Email</h1>
-                    <input {...register("email")} value={user.email ? user.email:'Github Account'} type="email" placeholder="Email" className="w-full p-2" required />
+                    <input {...register("email")} value={user.email} type="email" placeholder="Email" className="w-full p-2" required />
 
                     <hr className=" border-b-1 border-[#a4dffd] " />
                 </div>

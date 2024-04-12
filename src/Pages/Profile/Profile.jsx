@@ -23,7 +23,7 @@ const Profile = () => {
                 </div>
                 <div  className="space-y-3">
                     <h1 data-aos='fade-right' data-aos-duration='1000' data-aos-delay="600" className="text-xl font-bold opacity-80">Email</h1>
-                    <p data-aos='fade-left' data-aos-duration='1000' data-aos-delay="800" className="lg:text-lg font-semibold text-[#1db2ff] ">{user.email ? user.email : 'GitHb Account'}</p>
+                    <p data-aos='fade-left' data-aos-duration='1000' data-aos-delay="800" className="lg:text-lg font-semibold text-[#1db2ff] ">{user.email}</p>
                     
                 </div>
                 <div  className="space-y-3">
