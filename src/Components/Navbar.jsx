@@ -15,7 +15,7 @@ const Navbar = () => {
         <li><NavLink className={({ isActive }) => isActive ? 'bg-base-300 font-bold' : 'font-bold'} to={'/rent'}>For Rent</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? 'bg-base-300 font-bold' : 'font-bold'} to={'/contact'}>Contact</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? 'bg-base-300 font-bold' : 'font-bold'} to={'/updateProfile'}>Update Profile</NavLink></li>
-        <li><NavLink className={({ isActive }) => isActive ? 'bg-base-300 font-bold' : 'font-bold'} to={'/profile'}>Profile</NavLink></li>
+        
     </>
     const handleLogOut = () => {
         logOut()
@@ -31,7 +31,7 @@ const Navbar = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <a className="btn btn-ghost lg:text-2xl font-extrabold">HomelyHub</a>
+                <a className="btn btn-ghost lg:text-2xl font-extrabold ">Homely<span className="text-[#1db2ff]">Hub</span></a>
             </div>
             <div className="2xl:navbar-end hidden xl:flex xl:gap-16 2xl:mr-32 ">
                 <ul className="menu menu-horizontal px-1 space-x-2">
