@@ -4,7 +4,7 @@
 Welcome Home to HomelyHub: Your Gateway to Dream Living!
 
 
-### Live Site URL: 
+### Live Site URL: https://homelyhub-d246a.web.app
 
 
 

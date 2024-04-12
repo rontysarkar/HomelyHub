@@ -18,17 +18,17 @@ const Profile = () => {
                         }
                     </div>
                 </div>
-                <div data-aos='fade-left' data-aos-duration='1200' className="space-y-4">
+                <div data-aos='fade-left' data-aos-duration='1000' data-aos-delay="400" className="space-y-4">
                     <p className=" text-xl lg:text-2xl font-bold text-[#1db2ff] ">{user.displayName}</p>
                 </div>
                 <div  className="space-y-3">
-                    <h1 data-aos='fade-right' data-aos-duration='1400' className="text-xl font-bold opacity-80">Email</h1>
-                    <p data-aos='fade-left' data-aos-duration='1600' className="lg:text-lg font-semibold text-[#1db2ff] ">{user.email ? user.email : 'GitHb Account'}</p>
+                    <h1 data-aos='fade-right' data-aos-duration='1000' data-aos-delay="600" className="text-xl font-bold opacity-80">Email</h1>
+                    <p data-aos='fade-left' data-aos-duration='1000' data-aos-delay="800" className="lg:text-lg font-semibold text-[#1db2ff] ">{user.email ? user.email : 'GitHb Account'}</p>
                     
                 </div>
                 <div  className="space-y-3">
-                    <h1 data-aos='fade-right' data-aos-duration='1800' className="text-xl font-bold opacity-80">Photo Url</h1>
-                    <p data-aos='fade-left' data-aos-duration='2000' className=" text-xs text-red-400 overflow-hidden "><a href="">{user.photoURL}</a></p>
+                    <h1 data-aos='fade-right' data-aos-duration='1000' data-aos-delay="1000" className="text-xl font-bold opacity-80">Photo Url</h1>
+                    <p data-aos='fade-left' data-aos-duration='1000' data-aos-delay="1200" className=" text-xs text-red-400 overflow-hidden "><a href="">{user.photoURL}</a></p>
     
                 </div>
                 <Link  to={'/updateProfile'} className="btn  bg-[#1db2ff] text-[#e7f6fd] mx-auto">UPDATE PROFILE</Link>
