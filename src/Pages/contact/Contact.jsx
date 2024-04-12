@@ -1,8 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 
+import { Helmet } from "react-helmet-async";
+
 const Contact = () => {
     return (
         <div className="">
+            <Helmet><title> Contact </title></Helmet>
             <div className="grid  grid-cols-1 gap-8 px-8 py-16 mt-28   mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32  dark:text-gray-800">
                 <div className="flex flex-col justify-between">
                     <div className="space-y-2 pt-10 pl-10">

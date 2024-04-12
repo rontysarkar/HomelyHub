@@ -9,6 +9,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import toast from 'react-hot-toast';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const Register = () => {
@@ -84,6 +85,7 @@ const Register = () => {
     }
     return (
         <div className="min-h-screen mb-10">
+            <Helmet><title> Register</title></Helmet>
            <div className="xl:w-1/4 lg:w-2/4 md:w-3/5  shadow-2xl rounded-xl mx-auto mt-20 ">
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                     <h1 className="text-center text-2xl font-bold">Register </h1>

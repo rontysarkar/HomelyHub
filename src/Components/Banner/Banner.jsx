@@ -16,36 +16,36 @@ import 'swiper/css/scrollbar';
 
 
 // import required modules
-import { Navigation,Autoplay , Pagination,  A11y,EffectCards} from 'swiper/modules';
+import { Navigation, Autoplay, Pagination, A11y, EffectCards } from 'swiper/modules';
 
 
 const Banner = () => {
-    return (
-        <>
-         <Swiper
-      // install Swiper modules
-      modules={[Navigation,Autoplay, Pagination, A11y,EffectCards]}
-      spaceBetween={50}
-      autoplay={{
-        delay: 3000,
-        disableOnInteraction: false,
-      }}
-      effect="cards"
-      slidesPerView={1}
-      navigation
-      pagination={{ clickable: true }}
-      
-      
-    >
-          <SwiperSlide><img className='w-full h-[550px] object-cover' src={img1} alt="" /></SwiperSlide>
-          <SwiperSlide><img className='w-full h-[550px] object-cover' src={img2} alt="" /></SwiperSlide>
-          <SwiperSlide><img className='w-full h-[550px] object-cover' src={img3} alt="" /></SwiperSlide>
-          <SwiperSlide><img className='w-full h-[550px] object-cover' src={img4} alt="" /></SwiperSlide>
-          <SwiperSlide><img className='w-full h-[550px] object-cover' src={img5} alt="" /></SwiperSlide>
-          
-        </Swiper>
-      </>
-    );
+  return (
+    <>
+      <Swiper
+        // install Swiper modules
+        modules={[Navigation,Autoplay,  Pagination, A11y, EffectCards]}
+        spaceBetween={50}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        effect="cards"
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+
+
+      >
+        <SwiperSlide><img className='w-full h-[550px] object-cover' src={img1} alt="" /></SwiperSlide>
+        <SwiperSlide><img className='w-full h-[550px] object-cover' src={img2} alt="" /></SwiperSlide>
+        <SwiperSlide><img className='w-full h-[550px] object-cover' src={img3} alt="" /></SwiperSlide>
+        <SwiperSlide><img className='w-full h-[550px] object-cover' src={img4} alt="" /></SwiperSlide>
+        <SwiperSlide><img className='w-full h-[550px] object-cover' src={img5} alt="" /></SwiperSlide>
+
+      </Swiper>
+    </>
+  );
 };
 
 export default Banner;
