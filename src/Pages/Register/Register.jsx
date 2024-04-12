@@ -13,80 +13,80 @@ import { Helmet } from "react-helmet-async";
 
 
 const Register = () => {
-    const [registerError,setRegisterError] = useState('')
-    const [show,setShow] = useState(false)
-    const {register,reset, handleSubmit,} = useForm()
-    const { createUser,userProfileUpdate,setUser } = useContext(AuthContext)
+    const [registerError, setRegisterError] = useState('')
+    const [show, setShow] = useState(false)
+    const { register, reset, handleSubmit, } = useForm()
+    const { createUser, userProfileUpdate, setUser } = useContext(AuthContext)
     const gitProvider = new GithubAuthProvider();
     const googleProvider = new GoogleAuthProvider();
-    const { signInWithPopUp} = useContext(AuthContext)
+    const { signInWithPopUp } = useContext(AuthContext)
     const Navigate = useNavigate()
 
 
-    
+
 
     // CreateUser with email
     const onSubmit = (data) => {
-        if(data.password.length < 6){
+        if (data.password.length < 6) {
             setRegisterError('Password must be at least 6 characters long')
             return
         }
 
-        if(!/(?=.*[A-Z])/.test(data.password)){
+        if (!/(?=.*[A-Z])/.test(data.password)) {
             setRegisterError('Must have an Uppercase letter in the password')
             return
         }
-        if(!/(?=.*[a-z])/.test(data.password)){
+        if (!/(?=.*[a-z])/.test(data.password)) {
             setRegisterError('Must have a Lowercase letter in the password')
             return
         }
 
 
         setRegisterError('')
-        createUser(data.email,data.password)
-        .then(result=>{
-            userProfileUpdate(data.name,data.image)
-            .then(result=>{
-                setUser({displayName : data.name, photoURL : data.image})
+        createUser(data.email, data.password)
+            .then(result => {
+                userProfileUpdate(data.name, data.image)
+                    .then(result => {
+                        setUser({ displayName: data.name, photoURL: data.image })
+                        console.log(result)
+                    })
+                toast.success('You have successfully registered.')
+                console.log(result.user)
+                reset()
+                Navigate('/')
+            })
+            .catch(error => {
+
+                toast.error(error.message.split('/')[1].split(')')[0])
+                console.log(error)
+            })
+    }
+
+
+
+    const handleGoogle = () => {
+        signInWithPopUp(googleProvider)
+            .then(result => {
                 console.log(result)
             })
-            toast.success('You have successfully registered.')
-            console.log(result.user)
-            reset()
-            Navigate('/')
-        })
-        .catch(error =>{
-            
-            toast.error(error.message.split('/')[1].split(')')[0])
-            console.log(error)
-        })
+            .catch(error => {
+                console.log(error)
+            })
+
     }
-
-
-
-    const handleGoogle = () =>{
-        signInWithPopUp(googleProvider)
-        .then(result=>{
-            console.log(result)
-        })
-        .catch(error=>{
-            console.log(error)
-        })
-       
-    }
-    const handleGithub = () =>{
+    const handleGithub = () => {
         signInWithPopUp(gitProvider)
-        .then(result=>{
-            console.log(result)
-        })
-        .catch(error=>{
-            console.log(error)
-        })
+            .then(result => {
+                console.log(result)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
     return (
         <div className="min-h-screen mb-10">
             <Helmet><title> Register</title></Helmet>
-           <div className="xl:w-1/4 lg:w-2/4 md:w-3/5  shadow-2xl rounded-xl mx-auto mt-20 ">
+            <div className="xl:w-1/4 lg:w-2/4 md:w-3/5  shadow-2xl rounded-xl mx-auto mt-20 ">
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                     <h1 className="text-center text-2xl font-bold">Register </h1>
                     <div className="form-control">
@@ -99,7 +99,7 @@ const Register = () => {
                         <label className="label">
                             <span className="label-text ">Photo Url</span>
                         </label>
-                        <input {...register("image")} type="text" placeholder="Photo Url" className="input input-bordered"  />
+                        <input {...register("image")} type="text" placeholder="Photo Url" className="input input-bordered" />
                     </div>
                     <div className="form-control">
                         <label className="label">
@@ -113,16 +113,17 @@ const Register = () => {
                         </label>
                         <input {...register("password")} type={show ? 'text' : "password"} placeholder="Password" className="input input-bordered" required />
 
-                        {
-                            registerError && <p className="text-red-600 mt-3">{registerError}</p>
-                        }
-                        <div onClick={()=>setShow(!show)} className="absolute right-4 bottom-4 ">
-                           {
-                             show ? <FaEyeSlash size={20} /> : <FaEye size={20} /> 
-                           }
+
+                        <div onClick={() => setShow(!show)} className="absolute right-4 bottom-4 ">
+                            {
+                                show ? <FaEyeSlash size={20} /> : <FaEye size={20} />
+                            }
                         </div>
 
                     </div>
+                    {
+                        registerError && <p className="text-red-600 mt-3">{registerError}</p>
+                    }
                     <div className="form-control mt-6">
                         <button type="submit" className="btn bg-[#1db2ff] text-white">Register</button>
                     </div>
