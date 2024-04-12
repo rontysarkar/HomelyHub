@@ -7,7 +7,7 @@ import userLogo from '../assets/images/UserLogo.jpg'
 
 
 const Navbar = () => {
-    const { logOut, user, } = useContext(AuthContext)
+    const { logOut, user,loading } = useContext(AuthContext)
 
     const navLinks = <>
         <li><Link className="font-bold" to={'/'}>Home</Link></li>
@@ -40,13 +40,13 @@ const Navbar = () => {
 
             </div>
             {
-                <div className=" relative group ">
+              loading ? <div className="w-[140px]"><span className="loading loading-ring loading-lg "></span> </div>  :   <div className=" relative group ">
                     <div>
                         <h1 className="absolute text-sm z-20 bg-[#e7f6fd] text-[#1db2ff] py-1 px-4 rounded-md -left-32 top-3 hidden group-hover:block font-semibold" >{user?.displayName}</h1>
                     </div>
 
                     {
-                        user && <div className={"dropdown dropdown-end"} >
+                     user && <div className={"dropdown dropdown-end"} >
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                 <div className="w-12 rounded-full">
                                     {
